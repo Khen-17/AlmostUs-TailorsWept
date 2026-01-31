@@ -112,6 +112,7 @@ section {
     align-items: center;
     border-radius: 12px;
     font-size: 1.2rem;
+    overflow: hidden;
 }
 
 /* MOBILE ADJUSTMENTS */
@@ -159,8 +160,21 @@ section {
 <section id="albums">
     <h2>Albums</h2>
     <div class="scroll-section">
-        <div class="item">Album 1</div>
-        <div class="item">Album 2</div>
+        <!-- Album 1 with thumbnail -->
+        <div class="item">
+            <a href="https://drive.google.com/file/d/FILE_ID_1/preview" target="_blank">
+                <img src="Thumbnails/1000084365.png" alt="Album 1" style="width:100%; height:100%; object-fit:cover;">
+            </a>
+        </div>
+
+        <!-- Album 2 with thumbnail -->
+        <div class="item">
+            <a href="https://drive.google.com/file/d/FILE_ID_2/preview" target="_blank">
+                <img src="Thumbnails/1000084364.png" alt="Album 2" style="width:100%; height:100%; object-fit:cover;">
+            </a>
+        </div>
+
+        <!-- Other Albums -->
         <div class="item">Album 3</div>
         <div class="item">Album 4</div>
     </div>
