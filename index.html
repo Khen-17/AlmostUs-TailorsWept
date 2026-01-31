@@ -15,15 +15,15 @@ html, body {
     font-family: Arial, sans-serif;
 }
 
-/* --- BACKGROUND IMAGE --- */
+/* --- BACKGROUND IMAGE (fit inside viewport) --- */
 body {
     background: 
       linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-      url("background/Almost Us - Poster.jpg");
-    background-size: cover;       /* auto resize for all devices */
-    background-position: center;
-    background-repeat: no-repeat;
-
+      url("background/Almost Us - Poster.jpg") no-repeat center center;
+    
+    background-size: contain;     /* <- changed from cover to contain */
+    background-color: black;      /* fallback if image doesn't fill entire screen */
+    
     display: flex;
     justify-content: center;
     align-items: center;
