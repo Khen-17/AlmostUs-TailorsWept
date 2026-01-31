@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image BG + Video Link</title>
+
+<style>
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* BACKGROUND IMAGE */
+body {
+    background: 
+      linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+      url("bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* MAIN CONTENT BOX */
+.card {
+    text-align: center;
+    max-width: 700px;
+    padding: 20px;
+}
+
+/* THUMBNAIL */
+.thumb-wrapper {
+    position: relative;
+    max-width: 100%;
+    margin-top: 20px;
+}
+
+.thumb-wrapper img {
+    width: 100%;
+    border-radius: 14px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+/* PLAY ICON */
+.play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 70px;
+    color: white;
+    text-shadow: 0 0 25px black;
+    pointer-events: none;
+}
+
+/* HOVER EFFECT (desktop only) */
+@media (hover: hover) {
+    .thumb-wrapper:hover img {
+        transform: scale(1.03);
+        transition: 0.3s ease;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Watch the Video 🎬</h1>
+    <p>Tap the thumbnail to open the video</p>
+
+    <div class="thumb-wrapper">
+        <a href="https://drive.google.com/file/d/FILE_ID/preview" target="_blank">
+            <img src="thumbnail.jpg" alt="Play video">
+            <div class="play-btn">▶</div>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
