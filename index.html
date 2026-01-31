@@ -6,6 +6,7 @@
 <title>Almost Us Page</title>
 
 <style>
+/* RESET */
 html, body {
     margin: 0;
     padding: 0;
@@ -65,7 +66,7 @@ section {
     min-height: 100vh;
 }
 
-/* MAIN HOME SECTION */
+/* HOME SECTION - BLACK INFO BAR */
 #home {
     display: flex;
     flex-direction: column;
@@ -74,36 +75,13 @@ section {
     text-align: center;
 }
 
-/* VIDEO THUMBNAIL */
-.thumb-wrapper {
-    position: relative;
-    max-width: 90%;
-    margin-top: 20px;
-    cursor: pointer;
-}
-
-.thumb-wrapper img {
-    width: 100%;
-    border-radius: 14px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease;
-}
-
-.play-btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 70px;
-    color: white;
-    text-shadow: 0 0 25px black;
-    pointer-events: none;
-}
-
-@media (hover: hover) {
-    .thumb-wrapper:hover img {
-        transform: scale(1.05);
-    }
+.info-bar {
+    width: 90%;
+    background-color: rgba(0,0,0,0.8); /* semi-transparent black */
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    text-align: center;
 }
 
 /* HORIZONTAL SCROLL SECTIONS */
@@ -140,7 +118,7 @@ section {
 @media (max-width: 600px) {
     .navbar h1 { font-size: 1.5rem; }
     .menu a { font-size: 0.9rem; }
-    .play-btn { font-size: 50px; }
+    .info-bar { font-size: 1rem; padding: 15px; }
     .item { min-width: 150px; min-height: 150px; font-size: 1rem; }
 }
 </style>
@@ -160,12 +138,8 @@ section {
 
 <!-- HOME SECTION -->
 <section id="home">
-    <p>Tap the thumbnail to watch the video</p>
-    <div class="thumb-wrapper">
-        <a href="https://drive.google.com/file/d/FILE_ID/preview" target="_blank">
-            <img src="thumbnail.jpg" alt="Play video">
-            <div class="play-btn">▶</div>
-        </a>
+    <div class="info-bar">
+        Everything About the Page
     </div>
 </section>
 
@@ -192,8 +166,8 @@ section {
     </div>
 </section>
 
+<!-- JS: Active nav highlighting -->
 <script>
-// Highlight current nav link
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.nav-link');
 
