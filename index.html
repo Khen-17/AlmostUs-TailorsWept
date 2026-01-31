@@ -14,14 +14,25 @@ html, body {
     font-family: Arial, sans-serif;
 }
 
-/* FULL-WIDTH IMAGE, KEEP ASPECT RATIO */
-.bg-image {
-    width: 100%;       /* fills the width of the page */
-    height: auto;      /* scales height proportionally */
-    display: block;
+/* CONTAINER TO HOLD IMAGE FULL SCREEN */
+.bg-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
 }
 
-/* CARD OVER IMAGE */
+/* IMAGE SCALES TO FIT BOTH WIDTH AND HEIGHT */
+.bg-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* keeps aspect ratio, fully visible */
+}
+
+/* CARD OVERLAY */
 .card {
     position: absolute;
     top: 0;
@@ -33,7 +44,7 @@ html, body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    pointer-events: none; /* so thumbnail clickable works */
+    pointer-events: none; /* only thumbnail clickable */
     color: white;
 }
 
@@ -42,7 +53,7 @@ html, body {
     position: relative;
     max-width: 90%;
     margin-top: 20px;
-    pointer-events: auto; /* clickable */
+    pointer-events: auto; /* make clickable */
     cursor: pointer;
 }
 
@@ -53,7 +64,7 @@ html, body {
     transition: transform 0.3s ease;
 }
 
-/* PLAY BUTTON OVERLAY */
+/* PLAY BUTTON */
 .play-btn {
     position: absolute;
     top: 50%;
@@ -81,23 +92,31 @@ h1 {
 p {
     font-size: 1.1rem;
 }
+
+/* MOBILE ADJUSTMENTS */
+@media (max-width: 600px) {
+    h1 { font-size: 1.5rem; }
+    p { font-size: 1rem; }
+    .play-btn { font-size: 50px; }
+}
 </style>
 </head>
 
 <body>
 
-<!-- FULL WIDTH IMAGE -->
-<img src="background/Almost Us - Poster.jpg" alt="Almost Us Poster" class="bg-image">
+<div class="bg-container">
+    <img src="background/Almost Us - Poster.jpg" alt="Almost Us Poster">
+    
+    <div class="card">
+        <h1>Almost Us 🎬</h1>
+        <p>Tap the thumbnail to watch the video</p>
 
-<div class="card">
-    <h1>Almost Us 🎬</h1>
-    <p>Tap the thumbnail to watch the video</p>
-
-    <div class="thumb-wrapper">
-        <a href="https://drive.google.com/file/d/FILE_ID/preview" target="_blank">
-            <img src="thumbnail.jpg" alt="Play video">
-            <div class="play-btn">▶</div>
-        </a>
+        <div class="thumb-wrapper">
+            <a href="https://drive.google.com/file/d/FILE_ID/preview" target="_blank">
+                <img src="thumbnail.jpg" alt="Play video">
+                <div class="play-btn">▶</div>
+            </a>
+        </div>
     </div>
 </div>
 
