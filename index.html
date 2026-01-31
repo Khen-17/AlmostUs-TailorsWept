@@ -14,36 +14,35 @@ html, body {
     font-family: Arial, sans-serif;
 }
 
-/* Container fills the screen */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #000; /* fallback */
-    overflow-x: hidden;
-}
-
-/* Make image responsive and fit the screen */
+/* FULL-WIDTH IMAGE, KEEP ASPECT RATIO */
 .bg-image {
-    max-width: 100%;
-    max-height: 100vh;
-    width: auto;
-    height: auto;
+    width: 100%;       /* fills the width of the page */
+    height: auto;      /* scales height proportionally */
+    display: block;
 }
 
-/* Card overlay */
+/* CARD OVER IMAGE */
 .card {
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 20px;
+    pointer-events: none; /* so thumbnail clickable works */
     color: white;
 }
 
-/* Thumbnail */
+/* THUMBNAIL */
 .thumb-wrapper {
     position: relative;
     max-width: 90%;
     margin-top: 20px;
+    pointer-events: auto; /* clickable */
     cursor: pointer;
 }
 
@@ -54,7 +53,7 @@ body {
     transition: transform 0.3s ease;
 }
 
-/* Play button overlay */
+/* PLAY BUTTON OVERLAY */
 .play-btn {
     position: absolute;
     top: 50%;
@@ -66,18 +65,28 @@ body {
     pointer-events: none;
 }
 
-/* Hover effect */
+/* HOVER EFFECT */
 @media (hover: hover) {
     .thumb-wrapper:hover img {
         transform: scale(1.05);
     }
+}
+
+/* TEXT STYLING */
+h1 {
+    font-size: 2rem;
+    margin: 0.5em 0;
+}
+
+p {
+    font-size: 1.1rem;
 }
 </style>
 </head>
 
 <body>
 
-<!-- FULL SCREEN IMAGE -->
+<!-- FULL WIDTH IMAGE -->
 <img src="background/Almost Us - Poster.jpg" alt="Almost Us Poster" class="bg-image">
 
 <div class="card">
