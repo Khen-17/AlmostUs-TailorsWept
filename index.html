@@ -18,18 +18,16 @@ html, body {
 .bg-container {
     width: 100vw;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
 }
 
-/* IMAGE SCALES TO FIT BOTH WIDTH AND HEIGHT */
+/* IMAGE FILLS ENTIRE SCREEN */
 .bg-container img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* keeps aspect ratio, fully visible */
+    object-fit: cover;       /* fills screen completely */
+    object-position: center; /* keep important part centered */
 }
 
 /* CARD OVERLAY */
@@ -44,7 +42,7 @@ html, body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    pointer-events: none; /* only thumbnail clickable */
+    pointer-events: none;
     color: white;
 }
 
@@ -53,7 +51,7 @@ html, body {
     position: relative;
     max-width: 90%;
     margin-top: 20px;
-    pointer-events: auto; /* make clickable */
+    pointer-events: auto; /* clickable */
     cursor: pointer;
 }
 
