@@ -3,53 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image BG + Video Link</title>
+<title>Almost Us Page</title>
 
 <style>
+/* --- RESET & FULLSCREEN --- */
 html, body {
     margin: 0;
+    padding: 0;
     width: 100%;
     height: 100%;
+    font-family: Arial, sans-serif;
 }
 
-/* BACKGROUND IMAGE */
+/* --- BACKGROUND IMAGE --- */
 body {
     background: 
       linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-      url("bg.jpg");
-    background-size: cover;
+      url("background/Almost Us - Poster.jpg");
+    background-size: cover;       /* auto resize for all devices */
     background-position: center;
     background-repeat: no-repeat;
 
     display: flex;
     justify-content: center;
     align-items: center;
-
-    font-family: Arial, sans-serif;
     color: white;
 }
 
-/* MAIN CONTENT BOX */
+/* --- MAIN CARD --- */
 .card {
     text-align: center;
     max-width: 700px;
     padding: 20px;
+    backdrop-filter: blur(3px); /* subtle blur behind text */
+    border-radius: 12px;
 }
 
-/* THUMBNAIL */
+/* --- VIDEO THUMBNAIL --- */
 .thumb-wrapper {
     position: relative;
     max-width: 100%;
     margin-top: 20px;
+    cursor: pointer;
 }
 
 .thumb-wrapper img {
     width: 100%;
     border-radius: 14px;
     box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
 }
 
-/* PLAY ICON */
+/* --- PLAY BUTTON ICON --- */
 .play-btn {
     position: absolute;
     top: 50%;
@@ -61,12 +66,21 @@ body {
     pointer-events: none;
 }
 
-/* HOVER EFFECT (desktop only) */
+/* --- HOVER EFFECT --- */
 @media (hover: hover) {
     .thumb-wrapper:hover img {
-        transform: scale(1.03);
-        transition: 0.3s ease;
+        transform: scale(1.05);
     }
+}
+
+/* --- RESPONSIVE TEXT --- */
+h1 {
+    font-size: 2rem;
+    margin: 0.5em 0;
+}
+
+p {
+    font-size: 1.1rem;
 }
 </style>
 </head>
@@ -74,8 +88,8 @@ body {
 <body>
 
 <div class="card">
-    <h1>Watch the Video 🎬</h1>
-    <p>Tap the thumbnail to open the video</p>
+    <h1>Almost Us 🎬</h1>
+    <p>Tap the thumbnail to watch the video</p>
 
     <div class="thumb-wrapper">
         <a href="https://drive.google.com/file/d/FILE_ID/preview" target="_blank">
