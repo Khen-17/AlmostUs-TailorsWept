@@ -6,52 +6,78 @@
 <title>Almost Us Page</title>
 
 <style>
+/* RESET */
 html, body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
     font-family: Arial, sans-serif;
-}
-
-/* CONTAINER TO HOLD IMAGE FULL SCREEN */
-.bg-container {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-}
-
-/* IMAGE FILLS ENTIRE SCREEN */
-.bg-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover;       /* fills screen completely */
-    object-position: center; /* keep important part centered */
 }
 
-/* CARD OVERLAY */
-.card {
-    position: absolute;
+/* BODY BACKGROUND */
+body {
+    background: url("background/Almost Us - Poster.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    overflow-y: auto; /* enable scrolling */
+}
+
+/* TOP NAV BAR */
+.navbar {
+    width: 100%;
+    background-color: rgba(0,0,0,0.7); /* semi-transparent */
+    padding: 10px 0;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center;
-    pointer-events: none;
-    color: white;
+    z-index: 100;
 }
 
-/* THUMBNAIL */
+/* TITLE */
+.navbar h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+/* MENU LINKS */
+.menu {
+    margin-top: 5px;
+    display: flex;
+    gap: 20px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.menu a:hover {
+    color: #ffcc00;
+}
+
+/* MAIN CONTENT */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 120px; /* leave space for navbar */
+    text-align: center;
+    padding: 20px;
+}
+
+/* VIDEO THUMBNAIL */
 .thumb-wrapper {
     position: relative;
     max-width: 90%;
     margin-top: 20px;
-    pointer-events: auto; /* clickable */
     cursor: pointer;
 }
 
@@ -81,20 +107,10 @@ html, body {
     }
 }
 
-/* TEXT STYLING */
-h1 {
-    font-size: 2rem;
-    margin: 0.5em 0;
-}
-
-p {
-    font-size: 1.1rem;
-}
-
 /* MOBILE ADJUSTMENTS */
 @media (max-width: 600px) {
-    h1 { font-size: 1.5rem; }
-    p { font-size: 1rem; }
+    .navbar h1 { font-size: 1.5rem; }
+    .menu a { font-size: 0.9rem; }
     .play-btn { font-size: 50px; }
 }
 </style>
@@ -102,19 +118,24 @@ p {
 
 <body>
 
-<div class="bg-container">
-    <img src="background/Almost Us - Poster.jpg" alt="Almost Us Poster">
-    
-    <div class="card">
-        <h1>Almost Us 🎬</h1>
-        <p>Tap the thumbnail to watch the video</p>
+<!-- NAVBAR -->
+<div class="navbar">
+    <h1>Almost Us</h1>
+    <div class="menu">
+        <a href="#">Home</a>
+        <a href="#">Merch</a>
+        <a href="#">Albums</a>
+    </div>
+</div>
 
-        <div class="thumb-wrapper">
-            <a href="https://drive.google.com/file/d/FILE_ID/preview" target="_blank">
-                <img src="thumbnail.jpg" alt="Play video">
-                <div class="play-btn">▶</div>
-            </a>
-        </div>
+<!-- MAIN CONTENT -->
+<div class="main-content">
+    <p>Tap the thumbnail to watch the video</p>
+    <div class="thumb-wrapper">
+        <a href="https://drive.google.com/file/d/FILE_ID/preview" target="_blank">
+            <img src="thumbnail.jpg" alt="Play video">
+            <div class="play-btn">▶</div>
+        </a>
     </div>
 </div>
 
