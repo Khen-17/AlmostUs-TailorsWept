@@ -15,14 +15,13 @@ html, body {
     font-family: Arial, sans-serif;
 }
 
-/* --- BACKGROUND IMAGE (fit inside viewport) --- */
+/* --- BACKGROUND IMAGE FIT INSIDE PAGE --- */
 body {
-    background: 
+    background:
       linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
       url("background/Almost Us - Poster.jpg") no-repeat center center;
-    
-    background-size: contain;     /* <- changed from cover to contain */
-    background-color: black;      /* fallback if image doesn't fill entire screen */
+    background-size: contain;      /* fit inside the page, no cropping */
+    background-color: black;       /* fallback for empty space */
     
     display: flex;
     justify-content: center;
