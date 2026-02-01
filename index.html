@@ -7,28 +7,29 @@
 
 <style>
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     scroll-behavior: smooth;
 }
 
 body {
     font-family: Arial, sans-serif;
-    background: #111;
-    color: #fff;
+    color: white;
+    background: url("background/Almost Us - Poster.jpg") no-repeat center center fixed;
+    background-size: cover;
 }
 
-/* NAV BAR */
+/* ===== NAV / TASK BAR ===== */
 nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(0,0,0,0.9);
-    padding: 15px 20px;
+    background: rgba(0,0,0,0.85);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 25px;
     z-index: 1000;
 }
 
@@ -39,38 +40,39 @@ nav h1 {
 
 nav a {
     color: #bbb;
-    margin-left: 20px;
     text-decoration: none;
+    margin-left: 20px;
     font-size: 14px;
 }
 
 nav a.active,
 nav a:hover {
     color: #fff;
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid white;
 }
 
-/* SECTIONS */
+/* ===== SECTIONS ===== */
 section {
-    padding: 100px 20px 60px;
     min-height: 100vh;
+    padding: 120px 20px 60px;
+    background: rgba(0,0,0,0.45); /* overlay so bg still visible */
 }
 
-/* HOME INFO BAR */
-.home-info {
-    background: #000;
-    padding: 30px;
+/* ===== HOME INFO BAR ===== */
+.home-box {
     max-width: 800px;
     margin: auto;
+    background: black;
+    padding: 30px;
     line-height: 1.6;
 }
 
-/* HORIZONTAL ROWS */
+/* ===== HORIZONTAL SCROLL ===== */
 .row {
     display: flex;
-    gap: 15px;
+    gap: 16px;
     overflow-x: auto;
-    padding: 10px 0;
+    padding: 10px;
 }
 
 .row::-webkit-scrollbar {
@@ -82,7 +84,7 @@ section {
     border-radius: 10px;
 }
 
-/* ITEM BOX */
+/* ===== ITEMS ===== */
 .item {
     flex: 0 0 auto;
     width: 220px;
@@ -96,12 +98,12 @@ section {
     border-radius: 8px;
 }
 
-/* MODAL */
+/* ===== MODAL ===== */
 .modal {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0,0,0,0.9);
     z-index: 9999;
     justify-content: center;
     align-items: center;
@@ -115,16 +117,29 @@ section {
 
 .close {
     position: absolute;
-    top: 15px;
-    right: 25px;
+    top: 20px;
+    right: 30px;
     font-size: 35px;
     cursor: pointer;
+}
+
+/* ===== MOBILE FIX ===== */
+@media (max-width: 600px) {
+    nav h1 {
+        font-size: 16px;
+    }
+
+    nav a {
+        font-size: 12px;
+        margin-left: 12px;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV BAR -->
 <nav>
     <h1>ALMOST US</h1>
     <div>
@@ -134,17 +149,18 @@ section {
     </div>
 </nav>
 
+<!-- HOME -->
 <section id="home">
-    <div class="home-info">
+    <div class="home-box">
         <h2>About</h2><br>
         <p>
-            Almost Us is a personal creative space featuring music,
-            visuals, and merch. Everything here connects to stories,
-            moments, and memories — raw and honest.
+            Almost Us is a creative space for music, visuals, and stories.
+            Every piece here reflects moments, memories, and emotions.
         </p>
     </div>
 </section>
 
+<!-- MERCH -->
 <section id="merch">
     <h2>Merch</h2><br>
     <div class="row">
@@ -157,13 +173,14 @@ section {
     </div>
 </section>
 
+<!-- ALBUMS -->
 <section id="albums">
     <h2>Albums</h2><br>
     <div class="row">
-        <a class="item" href="https://drive.google.com/file/d/1iChxW8SuNxq1p5hXo1S1JntMSp1LK0wQ/view?usp=drive_link" target="_blank">
+        <a class="item" href="https://drive.google.com/drive/folders/152vWUWtca-wuxGUEt2xELK4wMEXIn5NI" target="_blank">
             <img src="Thumbnails/1000084365.png">
         </a>
-        <a class="item" href="https://drive.google.com/file/d/1YODAry2Eje7h_PxWwZbDmTaYtPKHNlha/view?usp=drive_link" target="_blank">
+        <a class="item" href="https://drive.google.com" target="_blank">
             <img src="Thumbnails/1000084364.png">
         </a>
     </div>
@@ -187,16 +204,15 @@ function closeModal(e) {
     }
 }
 
-/* ACTIVE NAV ON SCROLL */
+/* ACTIVE NAV */
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-link");
 
 window.addEventListener("scroll", () => {
     let current = "";
     sections.forEach(section => {
-        const sectionTop = section.offsetTop - 120;
-        if (scrollY >= sectionTop) {
-            current = section.getAttribute("id");
+        if (scrollY >= section.offsetTop - 140) {
+            current = section.id;
         }
     });
 
