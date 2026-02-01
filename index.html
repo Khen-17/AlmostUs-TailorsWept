@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Almost Us</title>
-
 <style>
+/* ===== RESET & BASE ===== */
 * {
     margin: 0;
     padding: 0;
@@ -20,7 +20,7 @@ body {
     background-size: cover;
 }
 
-/* ===== NAV BAR ===== */
+/* ===== NAVIGATION BAR ===== */
 nav {
     position: fixed;
     top: 0;
@@ -52,15 +52,15 @@ nav h1 {
     transition: all 0.25s ease;
 }
 
-/* ===== HOVER BOX ===== */
+/* Hover box effect */
 .nav-links a:hover {
-    background-color: #c084fc;  /* hover box color */
-    color: #000;                 /* text inside box */
+    background-color: #c084fc;
+    color: #000;
 }
 
-/* ===== ACTIVE BOX ===== */
+/* Active nav section */
 .nav-links a.active {
-    background-color: #a855f7;  /* active box color */
+    background-color: #a855f7;
     color: #fff;
 }
 
@@ -71,18 +71,17 @@ section {
     background: rgba(0,0,0,0.45);
 }
 
-/* ===== HOME INFO ===== */
+/* ===== HOME BOX ===== */
 .home-box {
     max-width: 800px;
     margin: auto;
-    background: rgba(0,0,0,0.6); /* semi-transparent black */
+    background: rgba(0,0,0,0.6);
     padding: 30px;
     line-height: 1.6;
-    border-radius: 8px; /* optional, nice touch */
+    border-radius: 8px;
 }
 
-
-/* ===== HORIZONTAL SCROLL ===== */
+/* ===== HORIZONTAL SCROLL ROW ===== */
 .row {
     display: flex;
     gap: 16px;
@@ -113,7 +112,7 @@ section {
     border-radius: 8px;
 }
 
-/* ===== MODAL ===== */
+/* ===== MODALS ===== */
 .modal {
     display: none;
     position: fixed;
@@ -122,14 +121,17 @@ section {
     z-index: 9999;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
-.modal img {
+.modal img, .modal iframe {
     max-width: 90%;
-    max-height: 90%;
+    max-height: 60%;
     object-fit: contain;
+    border-radius: 8px;
 }
 
+/* CLOSE BUTTON */
 .close {
     position: absolute;
     top: 20px;
@@ -138,8 +140,8 @@ section {
     cursor: pointer;
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 600px) {
+/* ===== MOBILE RESPONSIVE ===== */
+@media(max-width: 600px) {
     nav h1 {
         font-size: 18px;
     }
@@ -156,13 +158,16 @@ section {
     .item {
         width: 180px;
     }
+
+    .modal img, .modal iframe {
+        max-height: 50%;
+    }
 }
 </style>
 </head>
-
 <body>
 
-<!-- NAV -->
+<!-- NAVIGATION -->
 <nav>
     <h1>ALMOST US</h1>
     <div class="nav-links">
@@ -172,18 +177,15 @@ section {
     </div>
 </nav>
 
-<!-- HOME -->
+<!-- HOME SECTION -->
 <section id="home">
     <div class="home-box">
         <h2>About</h2><br>
-        <p>
-            Almost Us is a creative space for music, visuals, and memories.
-            Everything here connects to moments that mattered.
-        </p>
+        <p>Almost Us is a creative space for music, visuals, and memories. Everything here connects to moments that mattered.</p>
     </div>
 </section>
 
-<!-- MERCH -->
+<!-- MERCH SECTION -->
 <section id="merch">
     <h2>Merch</h2><br>
     <div class="row">
@@ -196,52 +198,72 @@ section {
     </div>
 </section>
 
-<!-- ALBUMS -->
+<!-- ALBUMS SECTION -->
 <section id="albums">
     <h2>Albums</h2><br>
     <div class="row">
-        <a class="item" href="https://drive.google.com/file/d/1iChxW8SuNxq1p5hXo1S1JntMSp1LK0wQ/view?usp=drive_link" target="_blank">
+        <div class="item" onclick="openAlbumModal('https://drive.google.com/file/d/1iChxW8SuNxq1p5hXo1S1JntMSp1LK0wQ/preview')">
             <img src="Thumbnails/1000084365.png">
-        </a>
-        <a class="item" href="https://drive.google.com/file/d/1YODAry2Eje7h_PxWwZbDmTaYtPKHNlha/view?usp=drive_link" target="_blank">
+        </div>
+        <div class="item" onclick="openAlbumModal('https://drive.google.com/file/d/1YODAry2Eje7h_PxWwZbDmTaYtPKHNlha/preview')">
             <img src="Thumbnails/1000084364.png">
-        </a>
+        </div>
     </div>
 </section>
 
-<!-- MODAL -->
+<!-- MERCH MODAL -->
 <div id="imageModal" class="modal" onclick="closeModal(event)">
     <span class="close">&times;</span>
     <img id="modalImg">
 </div>
 
+<!-- ALBUM MODAL -->
+<div id="albumModal" class="modal" onclick="closeAlbumModal(event)">
+    <span class="close" onclick="closeAlbumModal(event)">&times;</span>
+    <iframe id="albumVideo" src="" frameborder="0" allowfullscreen></iframe>
+</div>
+
 <script>
-function openModal(src) {
+// MERCH MODAL FUNCTIONS
+function openModal(src){
     document.getElementById("imageModal").style.display = "flex";
     document.getElementById("modalImg").src = src;
 }
-
-function closeModal(e) {
-    if (e.target.id === "imageModal" || e.target.className === "close") {
+function closeModal(e){
+    if(e.target.id === "imageModal" || e.target.className === "close"){
         document.getElementById("imageModal").style.display = "none";
     }
 }
 
-/* ACTIVE NAV ON SCROLL */
+// ALBUM MODAL FUNCTIONS
+function openAlbumModal(videoUrl){
+    const modal = document.getElementById("albumModal");
+    const iframe = document.getElementById("albumVideo");
+    iframe.src = videoUrl;
+    modal.style.display = "flex";
+}
+function closeAlbumModal(e){
+    const modal = document.getElementById("albumModal");
+    const iframe = document.getElementById("albumVideo");
+    if(e.target.id === "albumModal" || e.target.className === "close"){
+        modal.style.display = "none";
+        iframe.src = ""; // stop video
+    }
+}
+
+// ACTIVE NAV ON SCROLL
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-link");
-
-window.addEventListener("scroll", () => {
+window.addEventListener("scroll",()=>{
     let current = "";
-    sections.forEach(section => {
-        if (scrollY >= section.offsetTop - 160) {
+    sections.forEach(section=>{
+        if(scrollY >= section.offsetTop - 160){
             current = section.id;
         }
     });
-
-    navLinks.forEach(link => {
+    navLinks.forEach(link=>{
         link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + current) {
+        if(link.getAttribute("href") === "#" + current){
             link.classList.add("active");
         }
     });
@@ -250,5 +272,3 @@ window.addEventListener("scroll", () => {
 
 </body>
 </html>
-
-
