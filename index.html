@@ -11,10 +11,10 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    scroll-behavior: smooth; /* smooth scrolling */
+    scroll-behavior: smooth;
 }
 
-/* BODY BACKGROUND */
+/* BACKGROUND */
 body {
     background: url("background/Almost Us - Poster.jpg") no-repeat center center fixed;
     background-size: cover;
@@ -23,12 +23,11 @@ body {
 
 /* NAVBAR */
 .navbar {
-    width: 100%;
-    background-color: rgba(0,0,0,0.8);
-    padding: 10px 0;
     position: fixed;
     top: 0;
-    left: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.8);
+    padding: 10px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,56 +40,53 @@ body {
 }
 
 .menu {
-    margin-top: 5px;
     display: flex;
     gap: 20px;
+    margin-top: 5px;
 }
 
 .menu a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 4px 8px;
-    border-radius: 4px;
-    transition: background-color 0.2s, color 0.2s;
+    padding: 4px 10px;
+    border-radius: 5px;
 }
 
-.menu a.active, .menu a:hover {
-    background-color: #ffcc00;
+.menu a.active,
+.menu a:hover {
+    background: #ffcc00;
     color: black;
 }
 
 /* SECTIONS */
 section {
-    padding: 100px 20px 50px 20px;
     min-height: 100vh;
+    padding: 120px 20px 50px;
 }
 
-/* HOME SECTION - BLACK INFO BAR */
+/* HOME */
 #home {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    text-align: center;
+    align-items: center;
 }
 
 .info-bar {
     width: 90%;
-    background-color: rgba(0,0,0,0.8); /* semi-transparent black */
+    background: rgba(0,0,0,0.8);
     padding: 20px;
-    border-radius: 10px;
-    font-size: 1.2rem;
+    border-radius: 12px;
     text-align: center;
+    font-size: 1.2rem;
 }
 
-/* HORIZONTAL SCROLL SECTIONS */
+/* HORIZONTAL SCROLL */
 .scroll-section {
     display: flex;
-    overflow-x: auto;
     gap: 20px;
+    overflow-x: auto;
     padding: 20px 0;
-    scrollbar-width: thin;
 }
 
 .scroll-section::-webkit-scrollbar {
@@ -98,29 +94,33 @@ section {
 }
 
 .scroll-section::-webkit-scrollbar-thumb {
-    background-color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.5);
     border-radius: 4px;
 }
 
-/* MERCH / ALBUM ITEM */
+/* ITEM BOX */
 .item {
     min-width: 200px;
     min-height: 200px;
-    background-color: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background: rgba(0,0,0,0.5);
     border-radius: 12px;
-    font-size: 1.2rem;
     overflow: hidden;
 }
 
-/* MOBILE ADJUSTMENTS */
+/* IMAGE FIT FIX */
+.item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* PERFECT FIT */
+    display: block;
+}
+
+/* MOBILE */
 @media (max-width: 600px) {
     .navbar h1 { font-size: 1.5rem; }
     .menu a { font-size: 0.9rem; }
-    .info-bar { font-size: 1rem; padding: 15px; }
-    .item { min-width: 150px; min-height: 150px; font-size: 1rem; }
+    .item { min-width: 150px; min-height: 150px; }
+    .info-bar { font-size: 1rem; }
 }
 </style>
 </head>
@@ -137,63 +137,61 @@ section {
     </div>
 </div>
 
-<!-- HOME SECTION -->
+<!-- HOME -->
 <section id="home">
     <div class="info-bar">
         Everything About the Page
     </div>
 </section>
 
-<!-- MERCH SECTION -->
+<!-- MERCH -->
 <section id="merch">
     <h2>Merch</h2>
     <div class="scroll-section">
-        <div class="item">Shirt 1</div>
-        <div class="item">Hoodie</div>
-        <div class="item">Cap</div>
-        <div class="item">Poster</div>
-        <div class="item">Shirt 2</div>
+        <div class="item"><img src="Merch/1000084374.jpg" alt="Merch 1"></div>
+        <div class="item"><img src="Merch/1000084373.jpg" alt="Merch 2"></div>
+        <div class="item"><img src="Merch/1000084372.jpg" alt="Merch 3"></div>
+        <div class="item"><img src="Merch/1000084371.jpg" alt="Merch 4"></div>
+        <div class="item"><img src="Merch/1000084370.jpg" alt="Merch 5"></div>
+        <div class="item"><img src="Merch/1000084369.png" alt="Merch 6"></div>
     </div>
 </section>
 
-<!-- ALBUMS SECTION -->
+<!-- ALBUMS -->
 <section id="albums">
     <h2>Albums</h2>
     <div class="scroll-section">
-        <!-- Album 1 with thumbnail -->
         <div class="item">
-            <a href="https://drive.google.com/file/d/1iChxW8SuNxq1p5hXo1S1JntMSp1LK0wQ/view?usp=drive_link" target="_blank">
-                <img src="Thumbnails/1000084365.png" alt="Album 1" style="width:100%; height:100%; object-fit:cover;">
+            <a href="https://drive.google.com/drive/folders/152vWUWtca-wuxGUEt2xELK4wMEXIn5NI" target="_blank">
+                <img src="Thumbnails/1000084365.png" alt="Album 1">
             </a>
         </div>
 
-        <!-- Album 2 with thumbnail -->
         <div class="item">
-            <a href="https://drive.google.com/file/d/1YODAry2Eje7h_PxWwZbDmTaYtPKHNlha/view?usp=drive_link" target="_blank">
-                <img src="Thumbnails/1000084364.png" alt="Album 2" style="width:100%; height:100%; object-fit:cover;">
+            <a href="https://drive.google.com/file/d/FILE_ID_2/preview" target="_blank">
+                <img src="Thumbnails/1000084364.png" alt="Album 2">
             </a>
         </div>
     </div>
 </section>
 
-<!-- JS: Active nav highlighting -->
 <script>
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-link');
+/* ACTIVE NAV HIGHLIGHT */
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
 
-window.addEventListener('scroll', () => {
-    let current = '';
+window.addEventListener("scroll", () => {
+    let current = "";
     sections.forEach(section => {
-        const sectionTop = section.offsetTop - 150; // adjust for navbar height
-        if (pageYOffset >= sectionTop) {
-            current = section.getAttribute('id');
+        if (pageYOffset >= section.offsetTop - 150) {
+            current = section.id;
         }
     });
 
     navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-            link.classList.add('active');
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
         }
     });
 });
@@ -201,6 +199,3 @@ window.addEventListener('scroll', () => {
 
 </body>
 </html>
-
-
-
