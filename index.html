@@ -20,7 +20,7 @@ body {
     background-size: cover;
 }
 
-/* ===== NAV BAR (RESTORED STYLE) ===== */
+/* ===== NAV BAR ===== */
 nav {
     position: fixed;
     top: 0;
@@ -48,12 +48,19 @@ nav h1 {
     text-decoration: none;
     font-size: 14px;
     padding-bottom: 4px;
+    transition: color 0.25s ease, border-color 0.25s ease;
 }
 
-.nav-links a.active,
+/* HOVER */
 .nav-links a:hover {
-    color: #fff;
-    border-bottom: 2px solid white;
+    color: #c084fc;
+    border-bottom: 2px solid #c084fc;
+}
+
+/* ACTIVE */
+.nav-links a.active {
+    color: #a855f7;
+    border-bottom: 2px solid #a855f7;
 }
 
 /* ===== SECTIONS ===== */
@@ -63,7 +70,7 @@ section {
     background: rgba(0,0,0,0.45);
 }
 
-/* ===== HOME INFO BAR ===== */
+/* ===== HOME INFO ===== */
 .home-box {
     max-width: 800px;
     margin: auto;
@@ -72,7 +79,7 @@ section {
     line-height: 1.6;
 }
 
-/* ===== HORIZONTAL ROW ===== */
+/* ===== HORIZONTAL SCROLL ===== */
 .row {
     display: flex;
     gap: 16px;
@@ -128,7 +135,7 @@ section {
     cursor: pointer;
 }
 
-/* ===== MOBILE RESPONSIVE ===== */
+/* ===== MOBILE ===== */
 @media (max-width: 600px) {
     nav h1 {
         font-size: 18px;
@@ -151,7 +158,7 @@ section {
 
 <body>
 
-<!-- NAV BAR -->
+<!-- NAV -->
 <nav>
     <h1>ALMOST US</h1>
     <div class="nav-links">
@@ -216,7 +223,7 @@ function closeModal(e) {
     }
 }
 
-/* ACTIVE NAV */
+/* ACTIVE NAV ON SCROLL */
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-link");
 
