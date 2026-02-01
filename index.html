@@ -3,191 +3,200 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Almost Us Page</title>
+<title>Almost Us</title>
 
 <style>
-/* RESET */
-html, body {
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
     scroll-behavior: smooth;
 }
 
-/* BACKGROUND */
 body {
-    background: url("background/Almost Us - Poster.jpg") no-repeat center center fixed;
-    background-size: cover;
-    color: white;
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: #fff;
 }
 
-/* NAVBAR */
-.navbar {
+/* NAV BAR */
+nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(0,0,0,0.8);
-    padding: 10px 0;
+    background: rgba(0,0,0,0.9);
+    padding: 15px 20px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    z-index: 100;
+    z-index: 1000;
 }
 
-.navbar h1 {
-    margin: 0;
-    font-size: 2rem;
+nav h1 {
+    font-size: 20px;
+    letter-spacing: 2px;
 }
 
-.menu {
-    display: flex;
-    gap: 20px;
-    margin-top: 5px;
-}
-
-.menu a {
-    color: white;
+nav a {
+    color: #bbb;
+    margin-left: 20px;
     text-decoration: none;
-    font-weight: bold;
-    padding: 4px 10px;
-    border-radius: 5px;
+    font-size: 14px;
 }
 
-.menu a.active,
-.menu a:hover {
-    background: #ffcc00;
-    color: black;
+nav a.active,
+nav a:hover {
+    color: #fff;
+    border-bottom: 2px solid #fff;
 }
 
 /* SECTIONS */
 section {
+    padding: 100px 20px 60px;
     min-height: 100vh;
-    padding: 120px 20px 50px;
 }
 
-/* HOME */
-#home {
+/* HOME INFO BAR */
+.home-info {
+    background: #000;
+    padding: 30px;
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.6;
+}
+
+/* HORIZONTAL ROWS */
+.row {
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.info-bar {
-    width: 90%;
-    background: rgba(0,0,0,0.8);
-    padding: 20px;
-    border-radius: 12px;
-    text-align: center;
-    font-size: 1.2rem;
-}
-
-/* HORIZONTAL SCROLL */
-.scroll-section {
-    display: flex;
-    gap: 20px;
+    gap: 15px;
     overflow-x: auto;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 
-.scroll-section::-webkit-scrollbar {
-    height: 8px;
+.row::-webkit-scrollbar {
+    height: 6px;
 }
 
-.scroll-section::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.5);
-    border-radius: 4px;
+.row::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
 }
 
 /* ITEM BOX */
 .item {
-    min-width: 200px;
-    min-height: 200px;
-    background: rgba(0,0,0,0.5);
-    border-radius: 12px;
-    overflow: hidden;
+    flex: 0 0 auto;
+    width: 220px;
+    cursor: pointer;
 }
 
-/* IMAGE FIT FIX */
 .item img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;      /* remove black spaces */
-    object-position: center;/* crop evenly */
+    height: auto;
     display: block;
+    border-radius: 8px;
 }
 
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
 
+.modal img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
 
-/* MOBILE */
-@media (max-width: 600px) {
-    .navbar h1 { font-size: 1.5rem; }
-    .menu a { font-size: 0.9rem; }
-    .item { min-width: 150px; min-height: 150px; }
-    .info-bar { font-size: 1rem; }
+.close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 35px;
+    cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
-    <h1>Almost Us</h1>
-    <div class="menu">
-        <a href="#home" class="nav-link active">Home</a>
+<nav>
+    <h1>ALMOST US</h1>
+    <div>
+        <a href="#home" class="nav-link">Home</a>
         <a href="#merch" class="nav-link">Merch</a>
         <a href="#albums" class="nav-link">Albums</a>
     </div>
+</nav>
+
+<section id="home">
+    <div class="home-info">
+        <h2>About</h2><br>
+        <p>
+            Almost Us is a personal creative space featuring music,
+            visuals, and merch. Everything here connects to stories,
+            moments, and memories — raw and honest.
+        </p>
+    </div>
+</section>
+
+<section id="merch">
+    <h2>Merch</h2><br>
+    <div class="row">
+        <div class="item"><img src="Merch/1000084374.jpg" onclick="openModal(this.src)"></div>
+        <div class="item"><img src="Merch/1000084373.jpg" onclick="openModal(this.src)"></div>
+        <div class="item"><img src="Merch/1000084372.jpg" onclick="openModal(this.src)"></div>
+        <div class="item"><img src="Merch/1000084371.jpg" onclick="openModal(this.src)"></div>
+        <div class="item"><img src="Merch/1000084370.jpg" onclick="openModal(this.src)"></div>
+        <div class="item"><img src="Merch/1000084369.png" onclick="openModal(this.src)"></div>
+    </div>
+</section>
+
+<section id="albums">
+    <h2>Albums</h2><br>
+    <div class="row">
+        <a class="item" href="https://drive.google.com/file/d/1iChxW8SuNxq1p5hXo1S1JntMSp1LK0wQ/view?usp=drive_link" target="_blank">
+            <img src="Thumbnails/1000084365.png">
+        </a>
+        <a class="item" href="https://drive.google.com/file/d/1YODAry2Eje7h_PxWwZbDmTaYtPKHNlha/view?usp=drive_link" target="_blank">
+            <img src="Thumbnails/1000084364.png">
+        </a>
+    </div>
+</section>
+
+<!-- MODAL -->
+<div id="imageModal" class="modal" onclick="closeModal(event)">
+    <span class="close">&times;</span>
+    <img id="modalImg">
 </div>
 
-<!-- HOME -->
-<section id="home">
-    <div class="info-bar">
-        Everything About the Page
-    </div>
-</section>
-
-<!-- MERCH -->
-<section id="merch">
-    <h2>Merch</h2>
-    <div class="scroll-section">
-        <div class="item"><img src="Merch/1000084374.jpg" alt="Merch 1"></div>
-        <div class="item"><img src="Merch/1000084373.jpg" alt="Merch 2"></div>
-        <div class="item"><img src="Merch/1000084372.jpg" alt="Merch 3"></div>
-        <div class="item"><img src="Merch/1000084371.jpg" alt="Merch 4"></div>
-        <div class="item"><img src="Merch/1000084370.jpg" alt="Merch 5"></div>
-        <div class="item"><img src="Merch/1000084369.png" alt="Merch 6"></div>
-    </div>
-</section>
-
-<!-- ALBUMS -->
-<section id="albums">
-    <h2>Albums</h2>
-    <div class="scroll-section">
-        <div class="item">
-            <a href="https://drive.google.com/drive/folders/152vWUWtca-wuxGUEt2xELK4wMEXIn5NI" target="_blank">
-                <img src="Thumbnails/1000084365.png" alt="Album 1">
-            </a>
-        </div>
-
-        <div class="item">
-            <a href="https://drive.google.com/file/d/FILE_ID_2/preview" target="_blank">
-                <img src="Thumbnails/1000084364.png" alt="Album 2">
-            </a>
-        </div>
-    </div>
-</section>
-
 <script>
-/* ACTIVE NAV HIGHLIGHT */
+function openModal(src) {
+    document.getElementById("imageModal").style.display = "flex";
+    document.getElementById("modalImg").src = src;
+}
+
+function closeModal(e) {
+    if (e.target.id === "imageModal" || e.target.className === "close") {
+        document.getElementById("imageModal").style.display = "none";
+    }
+}
+
+/* ACTIVE NAV ON SCROLL */
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-link");
 
 window.addEventListener("scroll", () => {
     let current = "";
     sections.forEach(section => {
-        if (pageYOffset >= section.offsetTop - 150) {
-            current = section.id;
+        const sectionTop = section.offsetTop - 120;
+        if (scrollY >= sectionTop) {
+            current = section.getAttribute("id");
         }
     });
 
@@ -202,5 +211,3 @@ window.addEventListener("scroll", () => {
 
 </body>
 </html>
-
-
