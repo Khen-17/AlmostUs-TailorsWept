@@ -20,33 +20,38 @@ body {
     background-size: cover;
 }
 
-/* ===== NAV / TASK BAR ===== */
+/* ===== NAV BAR (RESTORED STYLE) ===== */
 nav {
     position: fixed;
     top: 0;
     width: 100%;
     background: rgba(0,0,0,0.85);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 25px;
     z-index: 1000;
+    text-align: center;
+    padding: 15px 0 10px;
 }
 
 nav h1 {
-    font-size: 20px;
-    letter-spacing: 2px;
+    font-size: 22px;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
 }
 
-nav a {
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.nav-links a {
     color: #bbb;
     text-decoration: none;
-    margin-left: 20px;
     font-size: 14px;
+    padding-bottom: 4px;
 }
 
-nav a.active,
-nav a:hover {
+.nav-links a.active,
+.nav-links a:hover {
     color: #fff;
     border-bottom: 2px solid white;
 }
@@ -54,8 +59,8 @@ nav a:hover {
 /* ===== SECTIONS ===== */
 section {
     min-height: 100vh;
-    padding: 120px 20px 60px;
-    background: rgba(0,0,0,0.45); /* overlay so bg still visible */
+    padding: 140px 20px 60px;
+    background: rgba(0,0,0,0.45);
 }
 
 /* ===== HOME INFO BAR ===== */
@@ -67,7 +72,7 @@ section {
     line-height: 1.6;
 }
 
-/* ===== HORIZONTAL SCROLL ===== */
+/* ===== HORIZONTAL ROW ===== */
 .row {
     display: flex;
     gap: 16px;
@@ -123,15 +128,22 @@ section {
     cursor: pointer;
 }
 
-/* ===== MOBILE FIX ===== */
+/* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 600px) {
     nav h1 {
-        font-size: 16px;
+        font-size: 18px;
     }
 
-    nav a {
+    .nav-links {
+        gap: 18px;
+    }
+
+    .nav-links a {
         font-size: 12px;
-        margin-left: 12px;
+    }
+
+    .item {
+        width: 180px;
     }
 }
 </style>
@@ -142,7 +154,7 @@ section {
 <!-- NAV BAR -->
 <nav>
     <h1>ALMOST US</h1>
-    <div>
+    <div class="nav-links">
         <a href="#home" class="nav-link">Home</a>
         <a href="#merch" class="nav-link">Merch</a>
         <a href="#albums" class="nav-link">Albums</a>
@@ -154,8 +166,8 @@ section {
     <div class="home-box">
         <h2>About</h2><br>
         <p>
-            Almost Us is a creative space for music, visuals, and stories.
-            Every piece here reflects moments, memories, and emotions.
+            Almost Us is a creative space for music, visuals, and memories.
+            Everything here connects to moments that mattered.
         </p>
     </div>
 </section>
@@ -211,7 +223,7 @@ const navLinks = document.querySelectorAll(".nav-link");
 window.addEventListener("scroll", () => {
     let current = "";
     sections.forEach(section => {
-        if (scrollY >= section.offsetTop - 140) {
+        if (scrollY >= section.offsetTop - 160) {
             current = section.id;
         }
     });
