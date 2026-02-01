@@ -111,9 +111,11 @@ section {
 .item img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* PERFECT FIT */
+    object-fit: contain;   /* SHOW FULL IMAGE */
+    background-color: rgba(0,0,0,0.8); /* fills empty space nicely */
     display: block;
 }
+
 
 /* MOBILE */
 @media (max-width: 600px) {
@@ -199,3 +201,4 @@ window.addEventListener("scroll", () => {
 
 </body>
 </html>
+
