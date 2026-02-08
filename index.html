@@ -2,214 +2,272 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Memory Archive</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>Almost Us</title>
 <style>
+/* ===== RESET & BASE ===== */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', sans-serif;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
-    background: linear-gradient(135deg, #ede9fe, #f5f3ff);
-    color: #312e81;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: url("background/Almost Us - Poster.jpg") no-repeat center center fixed;
+    background-size: cover;
 }
 
-/* ===== NAV BAR (RESTORED) ===== */
+/* ===== NAVIGATION BAR ===== */
 nav {
     position: fixed;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(10px);
-    border-radius: 18px;
-    padding: 10px 18px;
-    display: flex;
-    gap: 12px;
+    top: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.85);
     z-index: 1000;
+    text-align: center;
+    padding: 15px 0 10px;
 }
 
-nav a {
+nav h1 {
+    font-size: 22px;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #fff;
     text-decoration: none;
-    color: #4c1d95;
-    padding: 8px 16px;
-    border-radius: 12px;
-    transition: 0.3s;
-    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: all 0.25s ease;
 }
 
-nav a:hover {
-    background: #ddd6fe;
+/* Hover box effect */
+.nav-links a:hover {
+    background-color: #c084fc;
+    color: #000;
+}
+
+/* Active nav section */
+.nav-links a.active {
+    background-color: #a855f7;
+    color: #fff;
 }
 
 /* ===== SECTIONS ===== */
 section {
-    padding: 110px 20px 70px;
-    max-width: 900px;
+    min-height: 100vh;
+    padding: 140px 20px 60px;
+    background: rgba(0,0,0,0.45);
+}
+
+/* ===== HOME BOX ===== */
+.home-box {
+    max-width: 800px;
     margin: auto;
+    background: rgba(0,0,0,0.6);
+    padding: 30px;
+    line-height: 1.6;
+    border-radius: 8px;
 }
 
-h1, h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-p {
-    line-height: 1.8;
-    text-align: center;
-    max-width: 750px;
-    margin: auto;
-}
-
-/* ===== ALBUMS ===== */
-.album-row {
+/* ===== HORIZONTAL SCROLL ROW ===== */
+.row {
     display: flex;
-    gap: 22px;
-    justify-content: center;
-    flex-wrap: wrap;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 10px;
 }
 
-.album {
-    width: 180px;
+.row::-webkit-scrollbar {
+    height: 6px;
+}
+
+.row::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+}
+
+/* ===== ITEMS ===== */
+.item {
+    flex: 0 0 auto;
+    width: 220px;
     cursor: pointer;
 }
 
-.album img {
+.item img {
     width: 100%;
-    border-radius: 18px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-    transition: transform 0.3s;
+    height: auto;
+    display: block;
+    border-radius: 8px;
 }
 
-.album img:hover {
-    transform: translateY(-6px);
-}
-
-/* ===== MERCH ===== */
-.merch-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
-}
-
-.merch-item {
-    background: white;
-    padding: 18px;
-    border-radius: 18px;
-    text-align: center;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-}
-
-/* ===== MODAL ===== */
+/* ===== MODALS ===== */
 .modal {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.75);
+    background: rgba(0,0,0,0.9);
+    z-index: 9999;
     justify-content: center;
     align-items: center;
-    z-index: 2000;
+    flex-direction: column;
 }
 
-.modal-content {
-    width: 90%;
-    max-width: 800px;
-    aspect-ratio: 16/9;
-    background: black;
-    border-radius: 14px;
-    overflow: hidden;
+.modal img, .modal iframe {
+    max-width: 90%;
+    max-height: 60%;
+    object-fit: contain;
+    border-radius: 8px;
 }
 
-.modal iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
+/* CLOSE BUTTON */
 .close {
     position: absolute;
-    top: 22px;
-    right: 28px;
-    font-size: 30px;
-    color: white;
+    top: 20px;
+    right: 30px;
+    font-size: 35px;
     cursor: pointer;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media(max-width: 600px) {
+    nav h1 {
+        font-size: 18px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .item {
+        width: 180px;
+    }
+
+    .modal img, .modal iframe {
+        max-height: 50%;
+    }
 }
 </style>
 </head>
-
 <body>
 
-<!-- ===== NAV ===== -->
+<!-- NAVIGATION -->
 <nav>
-    <a href="#home">Home</a>
-    <a href="#albums">Albums</a>
-    <a href="#merch">Merch</a>
+    <h1>ALMOST US</h1>
+    <div class="nav-links">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#merch" class="nav-link">Merch</a>
+        <a href="#albums" class="nav-link">Albums</a>
+    </div>
 </nav>
 
-<!-- ===== HOME ===== -->
+<!-- HOME SECTION -->
 <section id="home">
-    <h1>Home</h1>
-    <p>
-        Stories written with emotions rather than facts are welcome on this page.
-        This song examines love at its most vulnerable—when it's passionate,
-        ephemeral, and unforgettable. It explores how love may seem timeless in
-        the now and terrible in reflection using striking images and deep
-        allusions. For everyone who has ever loved deeply, lost softly, and
-        remained unchanged as the seasons changed, every lyric is a confession
-        and every chorus is a reenactment of a memory.
-    </p>
-</section>
-
-<!-- ===== ALBUMS ===== -->
-<section id="albums">
-    <h2>Albums</h2><br>
-    <div class="album-row">
-        <div class="album" onclick="openVideo()">
-            <img src="Thumbnails/album1.png" alt="Album One">
-        </div>
-        <div class="album" onclick="openVideo()">
-            <img src="Thumbnails/album2.png" alt="Album Two">
-        </div>
+    <div class="home-box">
+        <h2>About</h2><br>
+        <p>Almost Us is a creative space for music, visuals, and memories. Everything here connects to moments that mattered.</p>
     </div>
 </section>
 
-<!-- ===== MERCH ===== -->
+<!-- MERCH SECTION -->
 <section id="merch">
     <h2>Merch</h2><br>
-    <div class="merch-grid">
-        <div class="merch-item">Shirt</div>
-        <div class="merch-item">Hoodie</div>
-        <div class="merch-item">Poster</div>
+    <div class="row">
+        <div class="item"><img src="Merch/1000084374.jpg" onclick="openModal(this.src)"></div>
+        <div class="item"><img src="Merch/1000084373.jpg" onclick="openModal(this.src)"></div>
+        <div class="item"><img src="Merch/1000084372.jpg" onclick="openModal(this.src)"></div>
+        <div class="item"><img src="Merch/1000084371.jpg" onclick="openModal(this.src)"></div>
+        <div class="item"><img src="Merch/1000084370.jpg" onclick="openModal(this.src)"></div>
+        <div class="item"><img src="Merch/1000084369.png" onclick="openModal(this.src)"></div>
     </div>
 </section>
 
-<!-- ===== VIDEO MODAL ===== -->
-<div class="modal" id="videoModal">
-    <span class="close" onclick="closeVideo()">×</span>
-    <div class="modal-content">
-        <iframe id="videoFrame"
-        src="https://drive.google.com/file/d/1NLx00np4IRL9VPnOZsnr-Y7AMV9mP4M9/preview"
-        allow="autoplay"></iframe>
+<!-- ALBUMS SECTION -->
+<section id="albums">
+    <h2>Albums</h2><br>
+    <div class="row">
+        <div class="item" onclick="openAlbumModal('https://drive.google.com/file/d/1iChxW8SuNxq1p5hXo1S1JntMSp1LK0wQ/preview')">
+            <img src="Thumbnails/1000084365.png">
+        </div>
+        <div class="item" onclick="openAlbumModal('https://drive.google.com/file/d/1YODAry2Eje7h_PxWwZbDmTaYtPKHNlha/preview')">
+            <img src="Thumbnails/1000084364.png">
+        </div>
     </div>
+</section>
+
+<!-- MERCH MODAL -->
+<div id="imageModal" class="modal" onclick="closeModal(event)">
+    <span class="close">&times;</span>
+    <img id="modalImg">
+</div>
+
+<!-- ALBUM MODAL -->
+<div id="albumModal" class="modal" onclick="closeAlbumModal(event)">
+    <span class="close" onclick="closeAlbumModal(event)">&times;</span>
+    <iframe id="albumVideo" src="" frameborder="0" allowfullscreen></iframe>
 </div>
 
 <script>
-function openVideo() {
-    document.getElementById("videoModal").style.display = "flex";
+// MERCH MODAL FUNCTIONS
+function openModal(src){
+    document.getElementById("imageModal").style.display = "flex";
+    document.getElementById("modalImg").src = src;
+}
+function closeModal(e){
+    if(e.target.id === "imageModal" || e.target.className === "close"){
+        document.getElementById("imageModal").style.display = "none";
+    }
 }
 
-function closeVideo() {
-    document.getElementById("videoModal").style.display = "none";
+// ALBUM MODAL FUNCTIONS
+function openAlbumModal(videoUrl){
+    const modal = document.getElementById("albumModal");
+    const iframe = document.getElementById("albumVideo");
+    iframe.src = videoUrl;
+    modal.style.display = "flex";
+}
+function closeAlbumModal(e){
+    const modal = document.getElementById("albumModal");
+    const iframe = document.getElementById("albumVideo");
+    if(e.target.id === "albumModal" || e.target.className === "close"){
+        modal.style.display = "none";
+        iframe.src = ""; // stop video
+    }
 }
 
-/* AUTO FEATURED VIDEO */
-window.onload = () => {
-    openVideo();
-};
+// ACTIVE NAV ON SCROLL
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
+window.addEventListener("scroll",()=>{
+    let current = "";
+    sections.forEach(section=>{
+        if(scrollY >= section.offsetTop - 160){
+            current = section.id;
+        }
+    });
+    navLinks.forEach(link=>{
+        link.classList.remove("active");
+        if(link.getAttribute("href") === "#" + current){
+            link.classList.add("active");
+        }
+    });
+});
 </script>
 
 </body>
