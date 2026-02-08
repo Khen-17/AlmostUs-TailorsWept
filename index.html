@@ -6,13 +6,7 @@
 <title>Almost Us</title>
 <style>
 /* ===== RESET & BASE ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
-
+* {margin:0; padding:0; box-sizing:border-box; scroll-behavior: smooth;}
 body {
     font-family: Arial, sans-serif;
     color: white;
@@ -20,161 +14,99 @@ body {
     background-size: cover;
 }
 
-/* ===== NAVIGATION BAR ===== */
+/* ===== NAV ===== */
 nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.85);
-    z-index: 1000;
-    text-align: center;
-    padding: 15px 0 10px;
+    position: fixed; top:0; width:100%; background: rgba(0,0,0,0.85);
+    z-index:1000; text-align:center; padding:15px 0 10px;
 }
-
-nav h1 {
-    font-size: 22px;
-    letter-spacing: 3px;
-    margin-bottom: 8px;
-}
-
-.nav-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
+nav h1 {font-size:22px; letter-spacing:3px; margin-bottom:8px;}
+.nav-links {display:flex; justify-content:center; gap:20px;}
 .nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
-    padding: 8px 14px;
-    border-radius: 6px;
-    transition: all 0.25s ease;
+    color:#fff; text-decoration:none; font-size:14px; padding:8px 14px; border-radius:6px; transition:0.25s;
 }
-
-.nav-links a:hover {
-    background-color: #c084fc;
-    color: #000;
-}
-
-.nav-links a.active {
-    background-color: #a855f7;
-    color: #fff;
-}
+.nav-links a:hover {background-color:#c084fc; color:#000;}
+.nav-links a.active {background-color:#a855f7; color:#fff;}
 
 /* ===== SECTIONS ===== */
 section {
     min-height: 100vh;
-    padding: 140px 20px 60px;
-    background: rgba(0,0,0,0.45);
+    padding: 160px 20px 60px; /* Add extra top padding for nav */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* ===== HOME BOX ===== */
-.home-box {
+/* ===== BOXES ===== */
+.home-box, .teaser-box {
     max-width: 800px;
-    margin: auto;
+    width: 100%;
     background: rgba(0,0,0,0.6);
     padding: 30px;
     line-height: 1.7;
     border-radius: 8px;
     font-size: 15px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 /* ===== HORIZONTAL SCROLL ROW ===== */
 .row {
-    display: flex;
-    gap: 16px;
-    overflow-x: auto;
-    padding: 10px;
+    display:flex;
+    gap:16px;
+    overflow-x:auto;
+    padding:10px;
+    width: 100%;
 }
-
-.row::-webkit-scrollbar {
-    height: 6px;
-}
-
-.row::-webkit-scrollbar-thumb {
-    background: #555;
-    border-radius: 10px;
-}
+.row::-webkit-scrollbar {height:6px;}
+.row::-webkit-scrollbar-thumb {background:#555; border-radius:10px;}
 
 /* ===== ITEMS ===== */
-.item {
-    flex: 0 0 auto;
-    width: 220px;
-    cursor: pointer;
-}
-
-.item img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 8px;
-}
+.item {flex:0 0 auto; width:220px; cursor:pointer;}
+.item img {width:100%; height:auto; display:block; border-radius:8px;}
 
 /* ===== MODALS ===== */
 .modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.9);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    display:none; position:fixed; inset:0; background: rgba(0,0,0,0.9);
+    z-index:9999; justify-content:center; align-items:center; flex-direction:column;
 }
-
-.modal img, .modal iframe {
-    max-width: 90%;
-    max-height: 60%;
-    object-fit: contain;
-    border-radius: 8px;
-}
-
-/* CLOSE BUTTON */
-.close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 35px;
-    cursor: pointer;
-}
+.modal img, .modal iframe {max-width:90%; max-height:60%; object-fit:contain; border-radius:8px;}
+.close {position:absolute; top:20px; right:30px; font-size:35px; cursor:pointer;}
 
 /* ===== MOBILE RESPONSIVE ===== */
-@media(max-width: 600px) {
-    nav h1 {
-        font-size: 18px;
-    }
-
-    .nav-links {
-        gap: 12px;
-    }
-
-    .nav-links a {
-        font-size: 12px;
-        padding: 6px 10px;
-    }
-
-    .item {
-        width: 180px;
-    }
-
-    .modal img, .modal iframe {
-        max-height: 50%;
-    }
+@media(max-width:600px){
+    nav h1{font-size:18px;}
+    .nav-links{gap:12px;}
+    .nav-links a{font-size:12px; padding:6px 10px;}
+    .item{width:160px;}
+    .modal img,.modal iframe{max-height:50%;}
 }
 </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
+<!-- NAV -->
 <nav>
     <h1>ALMOST US</h1>
     <div class="nav-links">
+        <a href="#teaser" class="nav-link">Teaser</a>
         <a href="#home" class="nav-link">Home</a>
         <a href="#merch" class="nav-link">Merch</a>
         <a href="#albums" class="nav-link">Albums</a>
     </div>
 </nav>
+
+<!-- TEASER SECTION -->
+<section id="teaser">
+    <div class="teaser-box">
+        <h2>Teaser</h2><br>
+        <p>Watch the teaser again if you want to revisit the story behind "Almost Us".</p>
+        <div class="row">
+            <div class="item" onclick="openAlbumModal(featuredVideo)">
+                <img src="Thumbnails/1000084365.png">
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- HOME SECTION -->
 <section id="home">
@@ -230,6 +162,9 @@ section {
 </div>
 
 <script>
+// FEATURED VIDEO
+const featuredVideo = "https://drive.google.com/file/d/1NLx00np4IRL9VPnOZsnr-Y7AMV9mP4M9/preview";
+
 // MERCH MODAL
 function openModal(src){
     document.getElementById("imageModal").style.display = "flex";
@@ -273,6 +208,11 @@ window.addEventListener("scroll",()=>{
             link.classList.add("active");
         }
     });
+});
+
+// AUTO POPUP FEATURED VIDEO
+window.addEventListener("load", () => {
+    openAlbumModal(featuredVideo);
 });
 </script>
 
