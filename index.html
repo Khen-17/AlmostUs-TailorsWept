@@ -52,13 +52,11 @@ nav h1 {
     transition: all 0.25s ease;
 }
 
-/* Hover box effect */
 .nav-links a:hover {
     background-color: #c084fc;
     color: #000;
 }
 
-/* Active nav section */
 .nav-links a.active {
     background-color: #a855f7;
     color: #fff;
@@ -77,8 +75,9 @@ section {
     margin: auto;
     background: rgba(0,0,0,0.6);
     padding: 30px;
-    line-height: 1.6;
+    line-height: 1.7;
     border-radius: 8px;
+    font-size: 15px;
 }
 
 /* ===== HORIZONTAL SCROLL ROW ===== */
@@ -180,8 +179,15 @@ section {
 <!-- HOME SECTION -->
 <section id="home">
     <div class="home-box">
-        <h2>About</h2><br>
-        <p>Almost Us is a creative space for music, visuals, and memories. Everything here connects to moments that mattered.</p>
+        <p>
+            Stories written with emotions rather than facts are welcome on this page.
+            This song examines love at its most vulnerable—when it's passionate,
+            ephemeral, and unforgettable. It explores how love may seem timeless in
+            the now and terrible in reflection using striking images and deep
+            allusions. For everyone who has ever loved deeply, lost softly, and
+            remained unchanged as the seasons changed, every lyric is a confession
+            and every chorus is a reenactment of a memory.
+        </p>
     </div>
 </section>
 
@@ -219,12 +225,12 @@ section {
 
 <!-- ALBUM MODAL -->
 <div id="albumModal" class="modal" onclick="closeAlbumModal(event)">
-    <span class="close" onclick="closeAlbumModal(event)">&times;</span>
+    <span class="close">&times;</span>
     <iframe id="albumVideo" src="" frameborder="0" allowfullscreen></iframe>
 </div>
 
 <script>
-// MERCH MODAL FUNCTIONS
+// MERCH MODAL
 function openModal(src){
     document.getElementById("imageModal").style.display = "flex";
     document.getElementById("modalImg").src = src;
@@ -235,7 +241,7 @@ function closeModal(e){
     }
 }
 
-// ALBUM MODAL FUNCTIONS
+// ALBUM MODAL
 function openAlbumModal(videoUrl){
     const modal = document.getElementById("albumModal");
     const iframe = document.getElementById("albumVideo");
@@ -247,11 +253,11 @@ function closeAlbumModal(e){
     const iframe = document.getElementById("albumVideo");
     if(e.target.id === "albumModal" || e.target.className === "close"){
         modal.style.display = "none";
-        iframe.src = ""; // stop video
+        iframe.src = "";
     }
 }
 
-// ACTIVE NAV ON SCROLL
+// ACTIVE NAV
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-link");
 window.addEventListener("scroll",()=>{
